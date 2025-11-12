@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEGA-Project Hub</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --bg: #f2f5f7;
+            --card-bg: #ffffff;
+            --primary: #1f7a7a;
+            --primary-dark: #145252;
+            --secondary: #5a6c7a;
+            --text-main: #182026;
+            --text-muted: #556270;
+            --shadow: 0 16px 45px rgba(16, 19, 32, 0.08);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f1720;
+                --card-bg: #111b27;
+                --primary: #3fc5c9;
+                --primary-dark: #2a9a9d;
+                --secondary: #8ba2b4;
+                --text-main: #e8f1f8;
+                --text-muted: #94a6b8;
+                --shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 48px 20px 60px;
+        }
+
+        .container {
+            width: min(1100px, 100%);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 24px;
+            padding: clamp(30px, 5vw, 50px);
+            background: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .hero-logo {
+            width: 96px;
+            height: 96px;
+            border-radius: 24px;
+            overflow: hidden;
+            background: rgba(31, 122, 122, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-logo img {
+            width: 84px;
+            height: 84px;
+            object-fit: cover;
+        }
+
+        .hero-title {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .hero-title h1 {
+            margin: 0;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+        }
+
+        .hero-title p {
+            margin: 0;
+            font-size: clamp(1rem, 2.4vw, 1.2rem);
+            color: var(--text-muted);
+            max-width: 640px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 22px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 30px rgba(31, 122, 122, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(31, 122, 122, 0.32);
+        }
+
+        .btn-secondary {
+            background: rgba(31, 122, 122, 0.08);
+            color: var(--primary);
+            border-color: rgba(31, 122, 122, 0.18);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            border-color: rgba(31, 122, 122, 0.32);
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 26px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 45px rgba(16, 19, 32, 0.12);
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 1.35rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.98rem;
+        }
+
+        .card-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            background: rgba(31, 122, 122, 0.12);
+            color: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <section class="hero">
+            <div class="hero-header">
+                <div class="hero-logo">
+                    <img src="https://avatars.githubusercontent.com/u/108581335?s=200&v=4" alt="WEGA-Project logo">
+                </div>
+                <div class="hero-title">
+                    <h1>WEGA-Project</h1>
+                    <p>Открытая экосистема для автоматизации гидропонных установок: от оборудования и прошивок до калькуляторов профилей питательных растворов.</p>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="https://wega-project.github.io/wega-hpg/hpg.html" target="_blank" rel="noopener">Открыть HPG онлайн</a>
+                        <a class="btn btn-secondary" href="https://github.com/WEGA-project" target="_blank" rel="noopener">Перейти в организацию GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sections">
+            <article class="card">
+                <h2>Hydroponic Profile Generator</h2>
+                <p>Флагманский калькулятор питательных растворов. Поддерживает генерацию рецептов, автоматические расчёты дозировок и экспорт профилей.</p>
+                <div class="tag-list">
+                    <span class="tag">Web App</span>
+                    <span class="tag">Растворы</span>
+                    <span class="tag">Гидропоника</span>
+                </div>
+                <div class="card-actions">
+                    <a class="btn btn-primary" href="https://wega-project.github.io/wega-hpg/hpg.html" target="_blank" rel="noopener">Запустить</a>
+                    <a class="btn btn-secondary" href="https://github.com/WEGA-project/wega-hpg" target="_blank" rel="noopener">Репозиторий</a>
+                    <a class="btn btn-secondary" href="https://github.com/WEGA-project/wega-hpg/releases" target="_blank" rel="noopener">Скачать релизы</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <h2>WEGA Box</h2>
+                <p>Контроллер автоматизации: управление питательными насосами, освещением и климатом. Полный стек: железо, прошивка и инструкции по сборке.</p>
+                <div class="tag-list">
+                    <span class="tag">Прошивка</span>
+                    <span class="tag">Контроллер</span>
+                    <span class="tag">ESP32</span>
+                </div>
+                <div class="card-actions">
+                    <a class="btn btn-secondary" href="https://github.com/WEGA-project/wegabox" target="_blank" rel="noopener">Репозиторий</a>
+                    <a class="btn btn-secondary" href="https://github.com/WEGA-project/wegabox/wiki" target="_blank" rel="noopener">Wiki</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <h2>WEGA Mixer</h2>
+                <p>Аппарат для автоматического смешивания и дозирования солей. Поддерживает рецепты HPG и интеграцию с контроллером.</p>
+                <div class="tag-list">
+                    <span class="tag">Оборудование</span>
+                    <span class="tag">Дозатор</span>
+                </div>
+                <div class="card-actions">
+                    <a class="btn btn-secondary" href="https://github.com/WEGA-project/wega-mixer" target="_blank" rel="noopener">Репозиторий</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <h2>WEGA 3D Models</h2>
+                <p>OpenSCAD-модели компонентов систем WEGA: корпуса, крепления, переходники. Подготовлено для печати и кастомизации.</p>
+                <div class="tag-list">
+                    <span class="tag">3D</span>
+                    <span class="tag">OpenSCAD</span>
+                </div>
+                <div class="card-actions">
+                    <a class="btn btn-secondary" href="https://github.com/WEGA-project/wega-3d" target="_blank" rel="noopener">Репозиторий</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <h2>HPG JS Toolkit</h2>
+                <p>Лёгкие JavaScript-инструменты для интеграции расчётов HPG в сторонние решения: виджеты, скрипты и API.</p>
+                <div class="tag-list">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">SDK</span>
+                </div>
+                <div class="card-actions">
+                    <a class="btn btn-secondary" href="https://github.com/WEGA-project/hpg-js" target="_blank" rel="noopener">Репозиторий</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <h2>Комьюнити и поддержка</h2>
+                <p>Рекомендации, набор примеров, ссылки на чаты и возможность открыть issue с идеями или багами.</p>
+                <div class="tag-list">
+                    <span class="tag">Документация</span>
+                    <span class="tag">Примеры</span>
+                </div>
+                <div class="card-actions">
+                    <a class="btn btn-secondary" href="https://github.com/WEGA-project/wega-hpg/tree/main/examples" target="_blank" rel="noopener">Примеры профилей</a>
+                    <a class="btn btn-secondary" href="https://github.com/WEGA-project/wega-hpg/issues" target="_blank" rel="noopener">Трекер задач</a>
+                </div>
+            </article>
+        </section>
+
+        <footer>
+            Сделано участниками <a href="https://github.com/WEGA-project" target="_blank" rel="noopener">WEGA-Project</a>. Обновлено: ноябрь 2025.
+        </footer>
+    </main>
+</body>
+</html>
