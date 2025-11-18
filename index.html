@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WEGA-Project Hub</title>
+    <meta name="description" content="WEGA-Project — открытая платформа для автоматизации гидропонных установок: сервер, контроллеры, калькуляторы профилей и комьюнити.">
+    <meta name="keywords" content="WEGA, гидропоника, автоматизация, open source, контроллер, сервер, питательный раствор">
+    <meta name="theme-color" content="#3aa74a">
+    <meta property="og:title" content="WEGA-Project — открытая платформа автоматизации гидропоники">
+    <meta property="og:description" content="Открытый стек для умной гидропоники: от датчиков и миксеров до калькуляторов профилей и Домиков сообщества.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wega-project.github.io/">
+    <meta property="og:image" content="https://wega-project.github.io/wega.svg">
     <style>
         :root {
             color-scheme: light dark;
@@ -33,6 +41,17 @@
 
         * {
             box-sizing: border-box;
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         body {
@@ -65,6 +84,7 @@
             border-radius: 24px;
             box-shadow: var(--shadow);
             text-align: center;
+            animation: fade-up 0.5s ease-out;
         }
 
         .hero-logo-large {
@@ -95,6 +115,22 @@
             flex-wrap: wrap;
             gap: 12px;
             justify-content: center;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .hero-badge {
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(31, 122, 122, 0.08);
+            color: var(--primary-dark);
+            font-size: 0.85rem;
+            font-weight: 500;
         }
 
         .btn {
@@ -151,6 +187,10 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
+        .card-primary {
+            border: 2px solid rgba(58, 167, 74, 0.28);
+        }
+
         .card:hover {
             transform: translateY(-6px);
             box-shadow: 0 22px 45px rgba(16, 19, 32, 0.12);
@@ -163,6 +203,7 @@
             background: var(--card-bg);
             border-radius: 20px;
             box-shadow: var(--shadow);
+            animation: fade-up 0.5s ease-out;
         }
 
         .ecosystem h2 {
@@ -304,6 +345,22 @@
             text-align: center;
             color: var(--text-muted);
             font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .footer-links span {
+            color: var(--text-muted);
         }
 
         footer a {
@@ -323,6 +380,7 @@
             background: var(--card-bg);
             border-radius: 20px;
             box-shadow: var(--shadow);
+            animation: fade-up 0.5s ease-out;
         }
 
         .overview h2 {
@@ -371,15 +429,62 @@
 </head>
 <body>
     <main class="container">
-        <section class="hero">
+        <section class="hero" id="hero">
             <div class="hero-logo-large">
                 <img src="wega.svg" alt="WEGA-Project logo">
             </div>
-            <p class="hero-subtitle">Открытая экосистема для автоматизации гидропонных установок: от оборудования и прошивок до калькуляторов профилей питательных растворов.</p>
+            <p class="hero-subtitle">Открытая open source-экосистема для автоматизации гидропонных установок — от датчиков и миксеров до калькуляторов профилей и Домиков сообщества.</p>
+            <div class="hero-badges">
+                <span class="hero-badge">🔓 Open Source</span>
+                <span class="hero-badge">🌱 Гидропоника от дома до фермы</span>
+                <span class="hero-badge">🧩 Модульный стек: сервер, контроллеры, калькуляторы</span>
+            </div>
             <div class="hero-actions">
-                <a class="btn btn-primary" href="https://wega-project.github.io/wega-hpg/hpg.html" target="_blank" rel="noopener">Открыть HPG онлайн</a>
-                <a class="btn btn-secondary" href="https://github.com/WEGA-project" target="_blank" rel="noopener">Перейти в организацию GitHub</a>
-                <a class="btn btn-secondary" href="https://wega-project.github.io/wiki/" target="_blank" rel="noopener">Открыть Wiki</a>
+                <a class="btn btn-primary" href="https://wega-project.github.io/wega-hpg/hpg.html" target="_blank" rel="noopener">Начать с HPG онлайн</a>
+                <a class="btn btn-secondary" href="https://github.com/WEGA-project" target="_blank" rel="noopener">Организация на GitHub</a>
+                <a class="btn btn-secondary" href="https://wega-project.github.io/wiki/" target="_blank" rel="noopener">Документация</a>
+            </div>
+        </section>
+
+        <section class="overview" id="why-wega">
+            <h2>Почему WEGA?</h2>
+            <p>WEGA-Project собирает в одном месте сервер, контроллеры, калькуляторы и сообщество, чтобы упростить запуск и развитие гидропонных установок.</p>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <h3>🔓 Открытый код</h3>
+                    <p>Все ключевые компоненты доступны на GitHub: можно изучать, форкать и дорабатывать под свои задачи.</p>
+                </div>
+                <div class="overview-card">
+                    <h3>🧩 Модульная архитектура</h3>
+                    <p>Выбирайте только нужные модули: сервер, контроллеры, миксер, дозер, калькуляторы профилей и 3D-корпуса.</p>
+                </div>
+                <div class="overview-card">
+                    <h3>🌱 От балкона до фермы</h3>
+                    <p>Подходит для домашних установок, теплиц и небольших ферм — можно масштабироваться по мере роста.</p>
+                </div>
+                <div class="overview-card">
+                    <h3>👥 Живое сообщество</h3>
+                    <p>Домики, библиотека профилей, wiki и чат помогают делиться опытом, рецептами и решениями.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="overview" id="quick-start">
+            <h2>Быстрый старт</h2>
+            <p>Начните с расчёта питательного раствора и постепенно подключайте остальные компоненты экосистемы.</p>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <h3>1️⃣ Попробовать HPG онлайн</h3>
+                    <p>Откройте калькулятор профилей HPG в браузере, подберите соли и сохраните свой первый профиль.</p>
+                </div>
+                <div class="overview-card">
+                    <h3>2️⃣ Поднять сервер WEGA-SERVER</h3>
+                    <p>Разверните сервер по инструкции из wiki, чтобы собирать данные и управлять установкой.</p>
+                </div>
+                <div class="overview-card">
+                    <h3>3️⃣ Подключить контроллеры</h3>
+                    <p>Соберите или настройте WEGABOX, миксер и дозер, чтобы автоматизировать питание и контроль параметров.</p>
+                </div>
             </div>
         </section>
 
@@ -406,8 +511,8 @@
         </section>
 
         <section class="sections" id="subsystems">
-            <article class="card">
-                <h2>WEGA-SERVER</h2>
+            <article class="card card-primary">
+                <h2>🖥️ WEGA-SERVER</h2>
                 <p>Центральный сервер, который собирает данные со всех устройств, строит графики, помогает калибровать датчики и управлять установкой.</p>
                 <div class="tag-list">
                     <span class="tag">LAMP</span>
@@ -431,8 +536,8 @@
                 </div>
             </article>
 
-            <article class="card">
-                <h2>WEGABOX</h2>
+            <article class="card card-primary">
+                <h2>📦 WEGABOX</h2>
                 <p>Умный контроллер гидропоники: следит за pH, EC, температурой, уровнем раствора и управляет насосами, освещением и дозером.</p>
                 <div class="tag-list">
                     <span class="tag">Контроллер</span>
@@ -457,7 +562,7 @@
             </article>
 
             <article class="card">
-                <h2>WEGA-MIXER</h2>
+                <h2>🧪 WEGA-MIXER</h2>
                 <p>Автоматический миксер для точного взвешивания и приготовления концентратов A и B по рецептам HPG.</p>
                 <div class="tag-list">
                     <span class="tag">Оборудование</span>
@@ -482,7 +587,7 @@
             </article>
 
             <article class="card">
-                <h2>WEGA-DOSER</h2>
+                <h2>💧 WEGA-DOSER</h2>
                 <p>Дозатор удобрений на шаговых насосах, который поддерживает целевой профиль питания в рабочем баке.</p>
                 <div class="tag-list">
                     <span class="tag">Дозатор</span>
@@ -504,8 +609,8 @@
                 </div>
             </article>
 
-            <article class="card">
-                <h2>Hydroponic Profile Generator (WEGA-HPG)</h2>
+            <article class="card card-primary">
+                <h2>🧮 Hydroponic Profile Generator (WEGA-HPG)</h2>
                 <p>Кроссплатформенный калькулятор питательных растворов: подбирает соли, считает дозировки и готовит профили под ваши установки.</p>
                 <div class="tag-list">
                     <span class="tag">Web App</span>
@@ -526,7 +631,6 @@
                 <div class="card-actions">
                     <a class="btn btn-primary" href="https://wega-project.github.io/wega-hpg/hpg.html" target="_blank" rel="noopener">Запустить онлайн</a>
                     <a class="btn btn-secondary" href="https://github.com/WEGA-project/wega-hpg" target="_blank" rel="noopener">Репозиторий</a>
-                    <a class="btn btn-secondary" href="https://github.com/WEGA-project/wega-hpg/releases" target="_blank" rel="noopener">Скачать релизы</a>
                     <a class="btn btn-secondary" href="https://github.com/WEGA-project/wega-hpg/wiki" target="_blank" rel="noopener">Документация</a>
                 </div>
             </article>
@@ -582,7 +686,7 @@
             </article>
 
             <article class="card">
-                <h2>WEGA 3D Models</h2>
+                <h2>📐 WEGA 3D Models</h2>
                 <p>Библиотека 3D-корпусов и креплений для контроллеров, датчиков и узлов системы WEGA, готовых к печати и кастомизации.</p>
                 <div class="tag-list">
                     <span class="tag">3D</span>
@@ -604,7 +708,7 @@
             </article>
 
             <article class="card">
-                <h2>Комьюнити и поддержка</h2>
+                <h2>👥 Комьюнити и поддержка</h2>
                 <p>Живое сообщество энтузиастов: примеры установок, профили, ответы на вопросы и развитие проекта в открытом формате.</p>
                 <div class="tag-list">
                     <span class="tag">Документация</span>
@@ -623,14 +727,43 @@
                 </details>
                 <div class="card-actions">
                     <a class="btn btn-secondary" href="https://t.me/WEGA_SERVER" target="_blank" rel="noopener">Telegram-канал</a>
-                    <a class="btn btn-secondary" href="https://github.com/WEGA-project/wega-hpg/tree/main/examples" target="_blank" rel="noopener">Примеры профилей</a>
+                    <a class="btn btn-secondary" href="https://github.com/WEGA-project/wega-hpg/tree/master/examples" target="_blank" rel="noopener">Примеры профилей</a>
                     <a class="btn btn-secondary" href="https://github.com/WEGA-project" target="_blank" rel="noopener">Организация на GitHub</a>
                 </div>
             </article>
         </section>
 
+        <section class="overview" id="community-stories">
+            <h2>Сообщество и готовые рецепты</h2>
+            <p>Посмотрите реальные журналы выращивания и готовые профили питательных растворов от участников проекта WEGA.</p>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <h3>🏠 Домики сообщества</h3>
+                    <p>Личные страницы с фото установок, журналами выращивания и историями успеха гидропонщиков.</p>
+                </div>
+                <div class="overview-card">
+                    <h3>📚 Библиотека профилей</h3>
+                    <p>Подборка готовых профилей для разных культур и схем выращивания, которые можно использовать в HPG.</p>
+                </div>
+                <div class="overview-card">
+                    <h3>👀 Примеры профилей</h3>
+                    <p>Коллекция примеров и кейсов из репозитория, которые помогают быстрее подобрать рабочие рецепты.</p>
+                </div>
+            </div>
+        </section>
+
         <footer>
-            Сделано участниками <a href="https://github.com/WEGA-project" target="_blank" rel="noopener">WEGA-Project</a>. Обновлено: ноябрь 2025.
+            <div class="footer-links">
+                <a href="#hero">Начать</a>
+                <span>•</span>
+                <a href="#quick-start">Быстрый старт</a>
+                <span>•</span>
+                <a href="https://wega-project.github.io/wiki/" target="_blank" rel="noopener">Документация</a>
+                <span>•</span>
+                <a href="https://github.com/WEGA-project" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <div>Сделано участниками <a href="https://github.com/WEGA-project" target="_blank" rel="noopener">WEGA-Project</a>. Обновлено: ноябрь 2025.</div>
+            <div>Если проект полезен — поставьте ⭐ на GitHub и поделитесь ссылкой с другими гроверами.</div>
         </footer>
     </main>
 </body>
